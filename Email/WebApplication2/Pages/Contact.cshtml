@@ -1,0 +1,38 @@
+﻿@page
+@model ContactModel
+@using Microsoft.AspNetCore.Mvc.RazorPages
+@using MimeKit
+@using MailKit.Net.Smtp
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TageHelpers
+@functions{
+    public class ContactModel: PageModel
+    {
+        public string PostMessage { get; set; } = "";
+        public async Task<IActionResult> OnPostAsyn()
+        {
+            return Redirect("/contact");
+        }
+        public void OnGet(int id)
+        {
+            ViewData["PostMessage"] = "Your message has been sent [viewdata]";
+            PostMessage = "Post Message has been sent [property]";
+        }
+    }
+}
+@{
+    ViewData["Title"] = "Contact";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@Model.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
